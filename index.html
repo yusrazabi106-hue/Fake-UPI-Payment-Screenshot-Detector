@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPI Shield | Payment Security</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-icon">🛡️</div><div><h2>UPI Shield</h2><span>PAYMENT SECURITY</span></div></div>
+  <div class="menu-label">MAIN MENU</div>
+  <nav class="navigation">
+    <a href="#dashboard" class="nav-link active"><span>▦</span> Dashboard</a>
+    <a href="#verify" class="nav-link"><span>⌕</span> Verify Payment</a>
+    <a href="#history" class="nav-link"><span>◷</span> History</a>
+    <a href="#about" class="nav-link"><span>ⓘ</span> About System</a>
+  </nav>
+  <div class="sidebar-bottom"><div class="security-status"><div class="status-dot"></div><div><strong>System Status</strong><p id="systemStatus">Checking backend…</p></div></div><p class="version">UPI Shield v1.1.0</p></div>
+</aside>
+<main class="main-content">
+<header class="topbar"><div><p class="breadcrumb">Workspace / Dashboard</p><h3>Payment Security Dashboard</h3></div><div class="topbar-right"><div class="secure-badge"><span>●</span> Secure Workspace</div><div class="profile">US</div></div></header>
+
+<section class="page-section" id="dashboard">
+  <div class="welcome-section"><div><p class="eyebrow">WELCOME TO UPI SHIELD</p><h1>Verify before you <span>trust.</span></h1><p class="welcome-description">Inspect UPI payment screenshots for suspicious edits, inconsistent details and possible fraud indicators.</p><a href="#verify" class="primary-btn">Verify a Payment <span>→</span></a></div><div class="hero-shield"><div class="shield-glow"></div><div class="shield-symbol">🛡️</div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div></div></div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-top"><span>Images Analysed</span><span class="stat-icon blue">▣</span></div><h2 id="totalChecks">0</h2><p>Analysis attempts on this browser</p></div>
+    <div class="stat-card"><div class="stat-top"><span>Suspicious Flags</span><span class="stat-icon yellow">⚑</span></div><h2 id="flaggedChecks">0</h2><p>Analyses with warning indicators</p></div>
+    <div class="stat-card"><div class="stat-top"><span>Backend</span><span class="stat-icon purple">⌘</span></div><h2 id="backendMetric">—</h2><p id="backendCaption">Connection status</p></div>
+  </div>
+  <div class="section-heading"><div><h2>Quick Actions</h2><p>Choose what you want to do.</p></div></div>
+  <div class="quick-grid">
+    <a href="#verify" class="quick-card"><div class="quick-icon blue">↑</div><h3>Inspect Screenshot</h3><p>Upload a payment screenshot for OCR and forensic checks.</p><span>Get started →</span></a>
+    <a href="#history" class="quick-card"><div class="quick-icon purple">◷</div><h3>View Activity</h3><p>Review recent analyses and their outcomes.</p><span>View activity →</span></a>
+  </div>
+</section>
+
+<section class="page-section" id="verify">
+<div class="section-heading"><div><p class="eyebrow">IMAGE VERIFICATION</p><h2>Verify Payment Screenshot</h2><p>Upload a screenshot. UPI Shield will extract visible details and run available checks.</p></div></div>
+<div class="verification-layout">
+<div class="upload-card">
+  <div class="upload-header"><div><h3>Upload Payment Image</h3><p>Select a screenshot from your device.</p></div><span class="upload-label">IMAGE INPUT</span></div>
+  <div class="drop-zone" id="dropZone"><div class="upload-visual">↑</div><h3>Drag and drop your image here</h3><p>or browse files from your device</p><button class="secondary-btn" id="browseBtn">Browse Files</button><input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp" hidden><input type="file" id="cameraInput" accept="image/*" capture="environment" hidden><div class="file-info">Supported: JPG, PNG, WEBP<br>Maximum size: 10 MB</div></div>
+  <div class="preview-container" id="previewContainer"><div class="preview-heading"><h3>Selected Screenshot</h3><button class="remove-btn" id="removeBtn">Remove ✕</button></div><img id="imagePreview" alt="Uploaded payment screenshot"><div class="file-details"><span id="fileName">Image.png</span><span id="fileSize">0 KB</span></div></div>
+  <div class="upload-actions"><button class="secondary-btn camera-btn" id="cameraBtn">Take Photo</button><button class="primary-btn analyse-btn" id="analyseBtn" disabled>Analyse Screenshot →</button></div>
+  <p class="privacy-note">🔒 Image is sent to your local backend for analysis and is not retained as an uploaded file.</p>
+</div>
+<div class="info-column">
+  <div class="info-card"><div class="info-icon">🛡️</div><h3>What we inspect</h3><ul><li>OCR text and payment fields</li><li>Image dimensions and file properties</li><li>Possible edited-region clues</li><li>Timestamp plausibility</li><li>Repeated transaction IDs</li></ul></div>
+  <div class="info-card supported-card"><h3>UPI App Layouts</h3><div class="platform"><span class="platform-dot gpay"></span>Google Pay<span class="platform-target">Prototype</span></div><div class="platform"><span class="platform-dot phonepe"></span>PhonePe<span class="platform-target">Prototype</span></div><div class="platform"><span class="platform-dot paytm"></span>Paytm<span class="platform-target">Prototype</span></div><p class="platform-note">App identification is best-effort. App-specific reference templates still need to be collected and validated.</p></div>
+</div>
+</div>
+<div class="result-card" id="resultCard"><div class="result-header"><h3>Analysis Results</h3><span class="result-status" id="resultStatus">AWAITING IMAGE</span></div><div id="resultContent" class="empty-result"><div class="empty-icon">⌕</div><h3>No analysis performed yet</h3><p>Upload a screenshot and select Analyse Screenshot to see extracted text and checks.</p></div></div>
+</section>
+
+<section class="page-section" id="history">
+<div class="section-heading"><div><p class="eyebrow">ACTIVITY LOG</p><h2>Recent Activity</h2><p>Recent analysis results saved in this browser.</p></div><button class="secondary-btn" id="clearHistoryBtn">Clear History</button></div>
+<div class="history-card"><div class="history-header"><span>FILE NAME</span><span>DATE</span><span>RESULT</span></div><div id="historyList"><div class="history-empty"><div>◷</div><h3>No recent activity</h3><p>Your analyses will appear here.</p></div></div></div>
+</section>
+
+<section class="page-section" id="about">
+<div class="section-heading"><div><p class="eyebrow">ABOUT THE PROJECT</p><h2>What is UPI Shield?</h2></div></div>
+<div class="about-card"><div class="about-icon">🛡️</div><h2>Don't Trust the Screenshot. Verify the Payment.</h2><p>UPI Shield is a prototype that inspects payment screenshots for visible inconsistencies and potential manipulation indicators.</p><div class="about-features"><div><strong>01</strong><h3>Upload</h3><p>Submit a payment screenshot.</p></div><div><strong>02</strong><h3>Inspect</h3><p>Extract text and run forensic heuristics.</p></div><div><strong>03</strong><h3>Review</h3><p>See warnings, evidence and limitations.</p></div></div><div class="disclaimer">Important: screenshot analysis cannot prove that money was received. Even a clean-looking screenshot may be fake. Always confirm funds in the merchant's bank account or trusted payment provider. This prototype never labels a screenshot as proof of payment.</div></div>
+</section>
+<footer class="footer"><p>© 2026 UPI Shield. Built for Code Fuzion 2026.</p><p>Secure Payments. Smarter Decisions.</p></footer>
+</main></div><script src="script.js"></script>
+</body></html>
